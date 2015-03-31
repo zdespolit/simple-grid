@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <td ng-repeat="col in columns">
+                {{col.name}}
+                <button class="btn pull-right" ng-if="col.sortable" ng-click="sort(col.key)">
+                    <span class="glyphicon glyphicon-sort"></span>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td grid-filter-cell ng-repeat="col in columns"></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in data | rowFilter:columns | orderBy:orderKey:order">
+            <td grid-cell ng-repeat="col in columns"></td>
+        </tr>
+    </tbody>
+</table>
